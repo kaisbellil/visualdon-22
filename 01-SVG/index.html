@@ -13,7 +13,7 @@
   <body>
   </h1>
 
-  <svg width="400" height="100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <svg class="rectangle" width="400" height="100" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="400" height="100" stroke="red" fill="transparent" stroke-width="5"/>
     </svg>
     
@@ -21,7 +21,7 @@
     <h2> 
      donuts
     </h2>
-    <svg width="400" height="150">
+    <svg class="donut" width="400" height="150">
       <g transform="translate(20, 20)">
       <circle cx="50" cy="50" r="30" stroke="black" fill="transparent" stroke-width="5"/> 
       <circle cx="50" cy="50" r="60" stroke="black" fill="transparent" stroke-width="5"/>
@@ -36,18 +36,25 @@
 
     <h2>Path</h2>
     <svg width="400" height="150">
-    <path d="M 0 0 L 0 50 " fill="none" stroke-width="1" stroke="black" />
-    <path d="M 0 25 L 30 50 " fill="none" stroke-width="1" stroke="black" />
+    <path  d="M 0 0 L 0 50 " fill="none" stroke-width="1" stroke="black" />
+    
+    <path  d="M 0 25 L 30 50 " fill="none" stroke-width="1" stroke="black" />
+    
     <path d="M 0 25 L 30 0 " fill="none" stroke-width="1" stroke="black" />
    
     <path d="M 75 0 L 50 50" fill="none" stroke-width="1" stroke="black" />
     <path d="M 75 0 L 100 50" fill="none" stroke-width="1" stroke="black" />
     <path d="M 60 25 L 90 25" fill="none" stroke-width="1" stroke="black" />
 
-    <path d="M 130 0 L 130 50" fill="none" stroke-width="1" stroke="black" />
+    <path id="theMotionPath" d="M 130 0 L 130 50" fill="none" stroke-width="1" stroke="black" />
 
-    <path d="M 120 0 L 140 0" fill="none" stroke-width="1" stroke="black" />
-    <path d="M 120 50 L 140 50" fill="none" stroke-width="1" stroke="black" />
+    <path  d="M 120 0 L 140 0" fill="none" stroke-width="1" stroke="black" />
+    <path  d="M 120 50 L 140 50" fill="none" stroke-width="1" stroke="black" />
+    <circle cx="" cy="" r="10" fill="purple">
+      <animateMotion dur="6s" repeatCount="indefinite">
+        <mpath xlink:href="#theMotionPath" />
+      </animateMotion>
+    </circle>
 
     <path d="M 120 0 L 140 0" fill="none" stroke-width="1" stroke="black" />
   
