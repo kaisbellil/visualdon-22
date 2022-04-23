@@ -1,15 +1,9 @@
-/*
-fetch('https://jsonplaceholder.typicode.com/posts')
-  .then(response => response.json())
-  .then(json => console.log(json))
-*/
 import * as d3 from 'd3';
 import { json } from 'd3-fetch'
   
 
-  var arrayUserPost = []
-  //console.log(arrayUserPost);
-  //var arrayUserPost = Array;
+  var userPost = []
+
 
   Promise.all([
     json('https://jsonplaceholder.typicode.com/users'),
@@ -20,7 +14,7 @@ import { json } from 'd3-fetch'
     console.log(users);
     console.log(posts);
 
-    // Création tableau utilisateurs avec leurs posts
+
     for (let i = 0; i < users.length; i++) {
         let arrayCurrentUser = {};
         arrayCurrentUser["nom_utilisateur"] = users[i].username;
@@ -35,16 +29,14 @@ import { json } from 'd3-fetch'
         });
         arrayCurrentUser["posts"] = userPosts;
 
-        arrayUserPost.push(arrayCurrentUser);
+        userPost.push(arrayCurrentUser);
     }
 
 
-    // Calculer le nombre de posts par utilisateur
     users.forEach(user => {
         let cpt = 0
 
         posts.forEach(post => {
-            // console.log(post.userId);
             if (post.userId == user.id) {
                 cpt++;
             }
@@ -82,8 +74,7 @@ import { json } from 'd3-fetch'
                 .append('p')
                 .text(`${userLongestPost} a écrit le plus long post`)
 
-    
-    // Graphique bâton
+
 
     var margin = {top: 20, right: 10, bottom: 60, left: 60};
     var width = 1500 - margin.left - margin.right,
@@ -100,12 +91,12 @@ import { json } from 'd3-fetch'
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
     let x = d3.scaleBand()
-        .domain(arrayUserPost.map(function(d) { return d["nom_utilisateur"]; }))
+        .domain(userPost.map(function(d) { return d["nom_utilisateur"]; }))
         .range([ 1000, 0]);
         
 
     let y = d3.scaleLinear()
-        .domain(arrayUserPost.map(function(d) { return d["posts"].length; }))
+        .domain(userPost.map(function(d) { return d["posts"].length; }))
         .range([ height, 0]);
 
     
@@ -120,7 +111,7 @@ import { json } from 'd3-fetch'
     .attr("transform", "translate(-2,10)")
 
     svg.selectAll("bars")
-        .data(arrayUserPost)
+        .data(userPost)
         .enter()
         .append("rect")
             .attr("x", function(d) { return x(d["nom_utilisateur"])+40; })
