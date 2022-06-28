@@ -65,7 +65,7 @@ groupe3
     .attr("y", "310")
 
 
-// Changer la couleur du deuxième cercle
+/* // Changer la couleur du deuxième cercle
 const circle2 = d3.select('#secondCircle').attr("fill", "#E92528");
 circle2.attr("cx", "100")
 circle2.attr("cx", "200")
@@ -79,7 +79,7 @@ circle3.on("click", () => {
     circle1.attr("cx", "450")
     circle2.attr("cx", "450")
     circle3.attr("cx", "450")
-})
+}) */
 
 // Barchart
 const data = [20, 5, 25, 8, 15];

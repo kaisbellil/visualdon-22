@@ -15,9 +15,11 @@ Promise.all([
             let new_object = {
                 "nom_utilisateur" : usr.name,
                 "ville" : usr.address.city,
-                "titres_posts" : posts_filtered.map(post => post.title),
+                "titres_posts" : posts_filtered.map(post => {
+                    return post.title;
+                }),
             }
-            return new_object;post
+            return new_object;
         });
 
         // 2. Nombre de posts par user
