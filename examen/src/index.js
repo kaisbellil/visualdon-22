@@ -4,10 +4,36 @@ import * as d3 from 'd3'
 import data from '../data/countries.geojson'
 
 
+let body = d3.select("body").append("svg").attr("width", 10).attr("height", 10);
+
+
 // Exercice 2
-/* 
-const pays = data.features
-/* console.log(pays); */
+
+
+const ex2 = d3.select("body").append("div").attr("id", "ex2");
+
+ex2.append("h1").text("Exercice 2");
+
+const populations = data.features.filter(feature => feature.properties.POP2005 > 1000000);
+ex2.append("p").text("Pays > 1 million de population " + populations.length);
+
+
+const Afrique = data.features.filter((d, i) => {
+  return d.properties.REGION === 2
+})
+
+
+//D3.MEAN est la moyenne 
+body = d3.select("body").append('h2').text("Exercice 2.2 Population par continent")
+    /* body.append('p').text('Europe : ' + d3.mean(Europe)); */
+body.append('p').text('Afrique : ' + d3.mean(Afrique, d => d.properties.POP2005));
+/* body.append('p').text('Asie : ' + d3.mean(Asie));
+body.append('p').text('Oceanie : ' + d3.mean(Oceanie));
+body.append('p').text('Amerique : ' + d3.mean(Amerique));
+ */
+
+
+
 
 /* data.features.forEach(countri => {
     if (countri.properties.POP2005 > 1000000)
@@ -96,7 +122,7 @@ var projection = d3.geoMercator()
 
   let card = d3.select("body").append("div")	
   .attr("class", "card")				
-  .style("opacity", 0);
+  .style("opacity", 0); 
 
 // <-----------
 // Load external data and boot
