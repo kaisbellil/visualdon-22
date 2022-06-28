@@ -3,11 +3,9 @@ import * as d3 from 'd3'
 // Import des données
 import data from '../data/countries.geojson'
 
+// Exercice 2
 
 let body = d3.select("body").append("svg").attr("width", 10).attr("height", 10);
-
-
-// Exercice 2
 
 
 const ex2 = d3.select("body").append("div").attr("id", "ex2");
@@ -33,7 +31,7 @@ body.append('p').text('Amerique : ' + d3.mean(Amerique));
  */
 
 
-
+// AUTRE FACON DE FAIRE
 
 /* data.features.forEach(countri => {
     if (countri.properties.POP2005 > 1000000)
@@ -124,7 +122,7 @@ var projection = d3.geoMercator()
   .attr("class", "card")				
   .style("opacity", 0); 
 
-// <-----------
+// <----------- ENLEVER
 // Load external data and boot
 /* d3.queue()
   .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
@@ -134,7 +132,7 @@ var projection = d3.geoMercator()
   
 
 
-// <-----------
+// <----------- ENLEVER
 // function ready(error, topo) {
 // <-----------
 
